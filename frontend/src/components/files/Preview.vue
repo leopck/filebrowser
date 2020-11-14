@@ -5,9 +5,7 @@
         <i class="material-icons">close</i>
       </button>
 
-      <div class="title">
-        <span>{{ this.name }}</span>
-      </div>
+      <div class="title">{{ this.name }}</div>
 
       <preview-size-button v-if="isResizeEnabled && this.req.type === 'image'" @change-size="toggleSize" v-bind:size="fullSize" :disabled="loading"></preview-size-button>
       <button @click="openMore" id="more" :aria-label="$t('buttons.more')" :title="$t('buttons.more')" class="action">
@@ -52,7 +50,7 @@
           but don't worry, you can <a :href="download">download it</a>
           and watch it with your favorite video player!
         </video>
-        <object v-else-if="req.extension == '.pdf'" class="pdf" :data="raw"></object>
+        <object v-else-if="req.extension.toLowerCase() == '.pdf'" class="pdf" :data="raw"></object>
         <a v-else-if="req.type == 'blob'" :href="download">
           <h2 class="message">{{ $t('buttons.download') }} <i class="material-icons">file_download</i></h2>
         </a>
